@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class LinkedList {
+
+    public static void printReverse(Node head) {
+        if (head == null) {
+            return;
+        }
+        printReverse(head.next);
+        System.out.print(head.data + " ");
+    }
+
+    public static Node newNode(int data) {
+        return new Node(data);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Lenght of the list:");
+        int n = scanner.nextInt();
+       
+        if (n == 0) {
+            return;
+        }
+       
+        System.out.println("Elements:");
+        Node head = newNode(scanner.nextInt());
+        Node current = head;
+
+        for (int i = 1; i < n; i++) {
+            current.next = newNode(scanner.nextInt());
+            current = current.next;
+        }
+
+        printReverse(head);
+    }
+}
